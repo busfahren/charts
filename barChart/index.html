@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    .barChart rect {
+        fill: rgb(79, 106, 160); 
+    }
+
+    .barChart rect:hover {
+        fill: rgb(60, 90, 150);
+    }
+
+    .barChart text {
+        fill: white;
+        font: 10px sans-serif;
+    }
+
+</style>
+<body>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="barChart.js"></script>
+    <script type="text/javascript">
+        var bar = barChart()
+            .width(940)
+            .value(function(d) {
+                return +d.value;
+            })
+            .label(function(d) {
+                return d.label;
+            });
+
+        d3.json("data.json", function(data) {
+
+            d3.select("body").append("div")
+                .attr("class", "barChart")
+                .datum(data)
+                .call(bar);
+
+        });
+    </script>
+</body>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    .title {
+        color: #555;
+    }
+
+    .barChart rect {
+        fill: rgb(79, 106, 160); 
+    }
+
+    .barChart rect:hover {
+        fill: rgb(60, 90, 150);
+    }
+
+    .barChart text {
+        fill: white;
+        font: 10px sans-serif;
+    }
+
+    .chart-description {
+        color: #777;
+        font-size: 12px;
+    }
+
+    .axis text {
+        font: 10px sans-serif;
+    }
+    
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+  }
+
+  .area {
+      fill: rgb(79, 106, 160);
+  }
+
+</style>
+<body>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="areaChart.js"></script>
+    <script type="text/javascript">
+        var parseDate = d3.time.format("%d-%b-%y").parse;
+        var area = areaChart()
+            .width(940)
+            .height(400)
+            .xValue(function(d) {
+                return parseDate(d.date);
+            })
+            .yValue(function(d) {
+                return +d.close;
+            })
+            .yAxisLabel("Messages");
+
+        d3.csv("data.csv", function(data) {
+            d3.select("body").append("div")
+                .attr("class", "areaChart")
+                .datum(data)
+                .call(area);
+        });
+    </script>   
+</body>
