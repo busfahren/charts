@@ -1,44 +1,20 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-
-    .title {
-        color: #555;
-    }
-
-    .barChart rect {
-        fill: rgb(79, 106, 160); 
-    }
-
-    .barChart rect:hover {
-        fill: rgb(60, 90, 150);
-    }
-
-    .barChart text {
-        fill: white;
+    .areaChart text {
         font: 10px sans-serif;
     }
 
-    .chart-description {
-        color: #777;
-        font-size: 12px;
+    .areaChart .area {
+        fill: rgb(79, 106, 160);
     }
 
-    .axis text {
-        font: 10px sans-serif;
-    }
-    
-    .axis path,
-    .axis line {
+    .areaChart .axis path,
+    .areaChart .axis line {
       fill: none;
       stroke: #000;
       shape-rendering: crispEdges;
-  }
-
-  .area {
-      fill: rgb(79, 106, 160);
-  }
-
+    }
 </style>
 <body>
     <script src="http://d3js.org/d3.v3.min.js"></script>
